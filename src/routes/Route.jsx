@@ -47,17 +47,17 @@ const router = createBrowserRouter([
   },
   //ProtectedRoute Admin
   {
+    path: "/admin",
     element: (
       <ProtectedRouteAdmin>
-        <Container />
+        <AdminPage />
       </ProtectedRouteAdmin>
     ),
-    children: [
-      {
-        path: "/admin",
-        element: <AdminPage />,
-      },
-    ],
+  },
+  //main
+  {
+    element: <Container />,
+    children: [{ path: "/", element: <HomePage /> }],
   },
 ]);
 

@@ -17,7 +17,8 @@ export const registerAsync = createAsyncThunk(
     try {
       const res = await authService.register(input);
       setAccessToken(res.data.accessToken);
-      await authService.fetchProfile();
+      const fetchMe = await authService.fetchProfile();
+      return fetchMe.data.user;
     } catch (error) {
       thunkApi.rejectWithValue(error.response.data.message);
     }
@@ -30,7 +31,8 @@ export const loginAsync = createAsyncThunk(
     try {
       const res = await authService.loginByEmail(input);
       setAccessToken(res.data.accessToken);
-      await authService.fetchProfile();
+      const FetchMe = await authService.fetchProfile();
+      return FetchMe.data.user;
     } catch (error) {
       thunkApi.rejectWithValue(err.response.data.message);
     }
@@ -57,6 +59,7 @@ const authSlice = createSlice({
   reducers: {
     signOut: (state, action) => {
       state.isAuthenticated = false;
+      state.isAdmin = false;
       removeAccessToken();
     },
   },
@@ -83,9 +86,11 @@ const authSlice = createSlice({
         state.loading = true;
       })
       .addCase(loginAsync.fulfilled, (state, action) => {
-        state.isAuthenticated = true;
+        state.isAuthenticated = action.payload;
         state.loading = false;
         state.user = action.payload;
+
+        if (action.payload.status === "admin") state.isAdmin = true;
       })
       .addCase(loginAsync.rejected, (state) => {
         state.error = action.payload;

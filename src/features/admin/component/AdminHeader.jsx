@@ -1,7 +1,10 @@
 import Logo from "../../../assets/Logo.jpg";
 import { Link } from "react-router-dom";
+import { signOut } from "../../auth/slice/auth-slice";
+import { useDispatch } from "react-redux";
 
 export default function AdminHeader() {
+  const dispatch = useDispatch();
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -48,7 +51,9 @@ export default function AdminHeader() {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <button className="btn" onClick={() => dispatch(signOut())}>
+          Log Out
+        </button>
       </div>
     </div>
   );

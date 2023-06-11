@@ -1,6 +1,7 @@
 import AdminInput from "./AdminInput";
 import { HiAnnotation } from "react-icons/hi";
 import AdminSelect from "./AdminSelect";
+
 export default function AdminMain() {
   return (
     <div className="flex gap-10 justify-center ">

@@ -2,7 +2,11 @@ import { HiSearch, HiOutlineUser, HiOutlineShoppingCart } from "react-icons/hi";
 import Logo from "../assets/Logo.jpg";
 import Searchbar from "../component/Searchbar";
 import { Link } from "react-router-dom";
+import { signOut } from "../features/auth/slice/auth-slice";
+import { useDispatch, useSelector } from "react-redux";
 export default function Header() {
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   return (
     <header className="mb-10 ">
       <div className=" flex flex-col ">
@@ -36,6 +40,14 @@ export default function Header() {
               <HiOutlineShoppingCart className="flex-1" />
             </Link>
           </div>
+          {/* logout */}
+          {isAuthenticated && (
+            <div className="navbar-end flex flex-2 items-center justify-center w-20">
+              <button className="btn" onClick={() => dispatch(signOut())}>
+                Log Out
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <div className="px-4">
