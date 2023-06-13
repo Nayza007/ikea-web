@@ -5,9 +5,9 @@ import HomePage from "../pages/HomePage";
 import Container from "../layouts/Container";
 
 import RegisterPage from "../pages/RegisterPage";
-import ProfilePage from "../pages/ProfilePage";
+
 import CartPage from "../pages/CartPage";
-// import Profile from "../pages/Profile";
+
 import RedirectIfAuthenticated from "../features/auth/component/RedirectIfAuthenticated";
 import ProtectedRoute from "../features/auth/component/ProtectedRoutes";
 import AdminPage from "../pages/AdminPage";
@@ -40,8 +40,8 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/profile",
-        element: <ProfilePage />,
+        path: "/cart",
+        element: <CartPage />,
       },
     ],
   },
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
   //main
   {
     element: <Container />,
-    children: [{ path: "/", element: <HomePage /> }],
+    children: [{ path: "/", element: <HomePage /> }, ,],
   },
 ]);
 

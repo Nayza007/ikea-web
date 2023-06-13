@@ -3,15 +3,12 @@ import { Navigate } from "react-router-dom";
 
 export default function RedirectIfAuthenticated({ children }) {
   const { isAuthenticated, isAdmin } = useSelector((state) => state.auth);
-  console.log(isAuthenticated, isAdmin);
 
   if (isAdmin) {
-    console.log("1");
     return <Navigate to="/admin" />;
   } else if (isAuthenticated) {
-    console.log("2");
-    return <Navigate to="/profile" />;
+    return <Navigate to="/" />;
   }
-  console.log("3");
+
   return children;
 }

@@ -6,6 +6,7 @@ import Loader from "./component/Loader";
 function App() {
   const initialLoading = useSelector((state) => state.auth.initialLoading);
   if (initialLoading) return <Loader />;
+
   return (
     <>
       <Router />

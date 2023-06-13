@@ -32,6 +32,7 @@ export const loginAsync = createAsyncThunk(
       const res = await authService.loginByEmail(input);
       setAccessToken(res.data.accessToken);
       const FetchMe = await authService.fetchProfile();
+      // console.log(FetchMe.data.user);
       return FetchMe.data.user;
     } catch (error) {
       thunkApi.rejectWithValue(err.response.data.message);
@@ -43,8 +44,9 @@ export const fetchMe = createAsyncThunk(
   "auth/fetchMeAsync",
   async (_, thunkApi) => {
     try {
-      resFetchProfile = await authService.fetchProfile();
-      return res.data.user;
+      const resFetchProfile = await authService.fetchProfile();
+      // console.log(resFetchProfile.data.user);
+      return resFetchProfile.data.user;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
@@ -86,7 +88,7 @@ const authSlice = createSlice({
         state.loading = true;
       })
       .addCase(loginAsync.fulfilled, (state, action) => {
-        state.isAuthenticated = action.payload;
+        state.isAuthenticated = true;
         state.loading = false;
         state.user = action.payload;
 
@@ -102,7 +104,8 @@ const authSlice = createSlice({
       .addCase(fetchMe.fulfilled, (state, action) => {
         state.user = action.payload;
         state.initialLoading = false;
-        isAuthenticated = true;
+        state.isAuthenticated = true;
+        if (action.payload.status === "admin") state.isAdmin = true;
       })
       .addCase(fetchMe.rejected, (state, action) => {
         state.error = action.payload;

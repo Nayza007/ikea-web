@@ -32,8 +32,8 @@ export default function RegisterForm() {
   const onSubmit = async (data) => {
     try {
       await dispatch(registerAsync(data)).unwrap();
-      console.log("hi1");
-      navigate("/profile");
+
+      navigate("/");
     } catch (err) {}
   };
 
