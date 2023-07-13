@@ -19,6 +19,7 @@ const initialInput = {
   detail: "",
   quantity: "",
   price: "",
+  type: "",
 };
 export default function AdminForm() {
   const { fetchProduct, type } = useSelector(
@@ -143,7 +144,17 @@ export default function AdminForm() {
                 icon={<HiAnnotation />}
                 iconClass="absolute top-10 left-[60%]"
               />
-              <AdminSelect onChange={handleChangeInput} name="type" />
+              <AdminInput
+                placeholder="Type"
+                onChange={handleChangeInput}
+                name="type"
+                value={input.type}
+                className="relative"
+                icon={<HiAnnotation />}
+                iconClass="absolute top-10 left-[60%]"
+              />
+              {/* <AdminSelect onChange={handleChangeInput} name="type" /> */}
+
               <AdminInput
                 type="file"
                 onChange={handleChangeFile}

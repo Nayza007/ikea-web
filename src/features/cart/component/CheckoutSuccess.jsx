@@ -25,7 +25,7 @@ export default function CheckoutSuccess() {
   }, [sessionId]);
 
   return (
-    <div className=" w-full h-screen -mb-20">
+    <div className=" w-full h-[650px] -mb-20">
       {order ? (
         <div className="flex flex-col items-center pt-7 mx-auto  w-[40%] h-[80%] border rounded-3xl shadow-xl ">
           <HiCheckCircle className="text-[100px] text-green-600" />
