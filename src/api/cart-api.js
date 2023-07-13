@@ -5,3 +5,4 @@ export const addProductToCart = (productId) =>
 export const getCart = () => axios.get("/cart/fetch");
 export const updateProductToCart = (cart) =>
   axios.patch("/cart/updateCart", cart);
+export const deleteOrder = (id) => axios.delete(`/cart/deleteOrder/${id}`);

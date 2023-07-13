@@ -21,7 +21,9 @@ export default function RegisterInput({
         name={name}
         value={value}
         onChange={onChange}
-        className={`${className ? className : ""}`}
+        className={`${
+          className ? className : ""
+        } "w-full max-w-[430px] outline-none border border-[#c7c2c2] rounded-[8px] h-[40px] pl-2  focus:border-gray-500"`}
       />
     </div>
   );

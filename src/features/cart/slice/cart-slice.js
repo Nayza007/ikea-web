@@ -14,8 +14,20 @@ export const fetchCartAsync = createAsyncThunk(
     try {
       const fetchProduct = await cartService.getCart();
       // console.log(fetchProduct.data);
-
       return fetchProduct.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+export const deleteOrderAsync = createAsyncThunk(
+  "cart/deleteOrderAsync",
+  async (input, thunkApi) => {
+    try {
+      console.log(input);
+      const res = await cartService.deleteOrder(input.id);
+      console.log(res.data);
+      return res.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
@@ -25,11 +37,10 @@ export const addProductToCartAsync = createAsyncThunk(
   "cart/addProductToCartAsync",
   async (productId, thunkApi) => {
     try {
+      console.log(productId);
       const fetchProduct = await cartService.addProductToCart(productId);
-      // console.log("step1");
-      // console.log(fetchProduct.data);
 
-      return fetchProduct.data;
+      console.log(fetchProduct);
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data.message);
     }
@@ -68,7 +79,6 @@ const cartSlice = createSlice({
       })
       .addCase(addProductToCartAsync.fulfilled, (state, action) => {
         state.loading = false;
-        state.product = action.payload;
       })
       .addCase(addProductToCartAsync.rejected, (state, action) => {
         state.error = action.payload;
@@ -79,12 +89,18 @@ const cartSlice = createSlice({
       })
       .addCase(updateProductInCartAsync.fulfilled, (state, action) => {
         state.loading = false;
-        state.totalPrice = state.product.reduce((acc, curr) => {
-          acc = +curr?.quantity * +curr.Product?.price;
-          return acc;
-        }, 0);
       })
       .addCase(updateProductInCartAsync.rejected, (state, action) => {
+        state.error = action.payload;
+        state.loading = false;
+      })
+      .addCase(deleteOrderAsync.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(deleteOrderAsync.fulfilled, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(deleteOrderAsync.rejected, (state, action) => {
         state.error = action.payload;
         state.loading = false;
       }),

@@ -29,9 +29,9 @@ export default function RegisterForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.auth);
-  const onSubmit = async (data) => {
+  const onSubmit = async (input) => {
     try {
-      await dispatch(registerAsync(data)).unwrap();
+      await dispatch(registerAsync(input)).unwrap();
 
       navigate("/");
     } catch (err) {}

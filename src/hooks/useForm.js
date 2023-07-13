@@ -10,9 +10,8 @@ export default function useForm(initialstate, validate) {
   const handleSubmitForm = (onSubmit) => async (e) => {
     e.preventDefault();
 
-    console.log("start");
     const result = validate(input);
-    // console.log(error);
+
     if (result) {
       return setError(result);
     }

@@ -9,19 +9,25 @@ export default function CartList({
   return (
     <div className="p-4 flex flex-col gap-4">
       <hr />
-      <div className="flex gap-5 items-center ">
+      <div className="flex gap-5 items-center">
         <img
           src={src}
           alt="ikea"
           className="block object-cover h-[100px] w-[100px] border shadow-sm rounded-md"
         />
 
-        <p>{name}</p>
+        <p className="w-[250px] flex-shrink-0 font-medium">{name}</p>
 
-        <button onClick={onClickNe}>-</button>
-        <p className="text-[16px]">{quantity} amount</p>
-        <button onClick={onClick}>+</button>
-        <p>{price}</p>
+        <button onClick={onClickNe} className="w-1">
+          -
+        </button>
+        <p className="text-[16px] w-15 text-center">{quantity} ชิ้น</p>
+        <button onClick={onClick} className="w-1">
+          +
+        </button>
+        <p className="flex-1">
+          {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} บาท
+        </p>
       </div>
       <hr />
     </div>

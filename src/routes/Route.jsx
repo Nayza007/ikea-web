@@ -12,6 +12,11 @@ import RedirectIfAuthenticated from "../features/auth/component/RedirectIfAuthen
 import ProtectedRoute from "../features/auth/component/ProtectedRoutes";
 import AdminPage from "../pages/AdminPage";
 import ProtectedRouteAdmin from "../features/admin/component/ProtectedRoutesAdmin";
+import PaymentPage from "../pages/PaymentPage";
+import CheckoutSuccess from "../features/cart/component/CheckoutSuccess";
+import ProductPage from "../pages/ProductPage";
+import TransactionPage from "../pages/TransactionPage";
+
 const router = createBrowserRouter([
   //redirect
   {
@@ -54,10 +59,27 @@ const router = createBrowserRouter([
       </ProtectedRouteAdmin>
     ),
   },
+  {
+    path: "/transaction",
+    element: (
+      <ProtectedRouteAdmin>
+        <TransactionPage />
+      </ProtectedRouteAdmin>
+    ),
+  },
   //main
   {
-    element: <Container />,
-    children: [{ path: "/", element: <HomePage /> }, ,],
+    element: (
+      <ProtectedRoute>
+        <Container />
+      </ProtectedRoute>
+    ),
+    children: [
+      { path: "/", element: <HomePage /> },
+      { path: "payment", element: <PaymentPage /> },
+      { path: "/success", element: <CheckoutSuccess /> },
+      { path: "/product/:id", element: <ProductPage /> },
+    ],
   },
 ]);
 

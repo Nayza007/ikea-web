@@ -3,10 +3,9 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 export default function ProtectedRouteAdmin({ children }) {
-  const { isAdmin, isAuthenticated } = useSelector((state) => state.auth);
+  const { isAdmin } = useSelector((state) => state.auth);
 
-  if (!isAdmin && !isAuthenticated) {
-    console.log("Protectadmin");
+  if (!isAdmin) {
     return <Navigate to="/login" />;
   }
 

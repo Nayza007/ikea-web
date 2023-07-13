@@ -92,7 +92,11 @@ const authSlice = createSlice({
         state.loading = false;
         state.user = action.payload;
 
-        if (action.payload.status === "admin") state.isAdmin = true;
+        if (action.payload.status == "admin") {
+          state.isAdmin = true;
+        } else {
+          state.isAdmin = false;
+        }
       })
       .addCase(loginAsync.rejected, (state) => {
         state.error = action.payload;
