@@ -96,7 +96,7 @@ export default function Header({ setUpdate, update }) {
   }, [search]);
   return (
     <header className="mb-14 border-b p-5">
-      <div className="flex justify-start items-center flex-1 gap-9 px-1">
+      <div className="flex justify-start items-center flex-1 gap-9 px-1 ">
         <div className="w-[100px] self-start">
           <Link to="/">
             <img

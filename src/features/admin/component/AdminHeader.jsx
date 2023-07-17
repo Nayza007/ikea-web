@@ -16,7 +16,7 @@ export default function AdminHeader() {
           </div>
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex  ">
+      <div className="navbar-center  lg:flex  ">
         <ul className="menu menu-horizontal px-1 flex gap-10">
           <NavLink
             to="/admin"

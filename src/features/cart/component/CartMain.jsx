@@ -11,7 +11,6 @@ import { HiShieldCheck, HiShoppingBag } from "react-icons/hi";
 // import { STRIPE_KEY } from "../../../../config/env";
 import { createCheckoutAsync } from "../../stripe/slice/payment-slice";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 export default function CartMain() {
   const { product, totalPrice, orderId } = useSelector(
     (state) => state.cart.product
@@ -19,11 +18,6 @@ export default function CartMain() {
   // console.log(product);
   const [update, setUpdate] = useState(false);
   const [order, setOrder] = useState(null);
-  //// payment
-  console.log(order);
-  console.log(orderId);
-  console.log(product);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,6 +40,7 @@ export default function CartMain() {
 
   const handleClickPlus = async (index, isPlus) => {
     try {
+      console.log(isPlus);
       if (
         +product[index].Product?.quantity <= +product[index]?.quantity &&
         isPlus === 1

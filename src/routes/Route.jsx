@@ -75,10 +75,18 @@ const router = createBrowserRouter([
       </ProtectedRoute>
     ),
     children: [
-      { path: "/", element: <HomePage /> },
       { path: "payment", element: <PaymentPage /> },
       { path: "/success", element: <CheckoutSuccess /> },
       { path: "/product/:id", element: <ProductPage /> },
+    ],
+  },
+  {
+    element: <Container />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
     ],
   },
 ]);

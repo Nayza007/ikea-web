@@ -49,7 +49,7 @@ export default function ProductContainer() {
 
   return (
     <div>
-      <div className="lg:grid grid-cols-4 gap-5 max-sm:grid-cols-1 my-10">
+      <div className="lg:grid grid-cols-4 gap-5 my-10 -mt-5 max-sm:grid grid-cols-1 ">
         {product?.map((el, i) => {
           return (
             <ProductCard

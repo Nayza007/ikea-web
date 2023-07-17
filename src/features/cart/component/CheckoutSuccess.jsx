@@ -19,9 +19,9 @@ export default function CheckoutSuccess() {
       await dispatch(createTransactionAsync(sessionId)).unwrap();
     };
     transaction();
-    setTimeout(() => {
-      navigate("/");
-    }, 20000);
+    // setTimeout(() => {
+    //   navigate("/");
+    // }, 20000);
   }, [sessionId]);
 
   return (

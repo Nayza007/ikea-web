@@ -13,6 +13,7 @@ import {
 import validateProduct from "../../../validator/validate-product";
 import useForm from "../../../hooks/useForm";
 import AdminItemList from "./AdminItemList";
+import { useRef } from "react";
 
 const initialInput = {
   productName: "",
@@ -32,7 +33,7 @@ export default function AdminForm() {
   const [file, setFile] = useState(null);
   const [update, setUpdate] = useState(false);
   const [isShow, setIsShow] = useState(false);
-
+  const ref = useRef();
   const dispatch = useDispatch();
 
   const handleChangeFile = (e) => {
@@ -157,12 +158,33 @@ export default function AdminForm() {
 
               <AdminInput
                 type="file"
+                ref={ref}
                 onChange={handleChangeFile}
                 className="pt-2"
                 icon={<HiAnnotation />}
                 iconClass="absolute top-10 left-[60%]"
               />
+              {file && (
+                <div className="border rounded-2xl relative ">
+                  <span
+                    className="text-[25px] hover:cursor-pointer absolute z-10 text-green left-2"
+                    onClick={() => {
+                      console.log(ref.current);
 
+                      ref.current.value = "";
+                      setFile(null);
+                    }}
+                  >
+                    x
+                  </span>
+                  {file && (
+                    <img
+                      src={URL.createObjectURL(file)}
+                      className="border rounded-2xl h-[200px] w-full"
+                    />
+                  )}
+                </div>
+              )}
               <div className=" flex justify-center">
                 <button className="w-[50%] outline-none border border-[#c7c2c2] rounded-[8px] h-[40px] pl-2 bg-black text-white">
                   Add
