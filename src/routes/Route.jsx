@@ -77,7 +77,7 @@ const router = createBrowserRouter([
     children: [
       { path: "payment", element: <PaymentPage /> },
       { path: "/success", element: <CheckoutSuccess /> },
-      { path: "/product/:id", element: <ProductPage /> },
+      // { path: "/product/:id", element: <ProductPage /> },
     ],
   },
   {
@@ -87,6 +87,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <HomePage />,
       },
+      { path: "/product/:id", element: <ProductPage /> },
     ],
   },
 ]);

@@ -77,7 +77,7 @@ export default function CartMain() {
   };
 
   return (
-    <div className="flex flex-col px-3 gap-10 ">
+    <div className="flex flex-col px-3 gap-10 mt-[150px]">
       {/* <CartBreadcrumb /> */}
       {/* main */}
       <div className="flex  gap-5">

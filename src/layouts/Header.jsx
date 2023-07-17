@@ -95,7 +95,7 @@ export default function Header({ setUpdate, update }) {
     };
   }, [search]);
   return (
-    <header className="mb-14 border-b p-5">
+    <header className="mb-15 border-b p-5 fixed top-0 z-50 bg-white">
       <div className="flex justify-start items-center flex-1 gap-9 px-1 ">
         <div className="w-[100px] self-start">
           <Link to="/">
@@ -165,6 +165,7 @@ export default function Header({ setUpdate, update }) {
               onClick={() => {
                 dispatch(signOut());
                 setCount(null);
+                navigate("/login");
               }}
             >
               Log Out

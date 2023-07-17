@@ -19,13 +19,13 @@ export default function CheckoutSuccess() {
       await dispatch(createTransactionAsync(sessionId)).unwrap();
     };
     transaction();
-    // setTimeout(() => {
-    //   navigate("/");
-    // }, 20000);
+    setTimeout(() => {
+      navigate("/");
+    }, 20000);
   }, [sessionId]);
 
   return (
-    <div className=" w-full h-[650px] -mb-20">
+    <div className=" w-full h-[650px] -mb-20 mt-[150px]">
       {order ? (
         <div className="flex flex-col items-center pt-7 mx-auto  w-[40%] h-[80%] border rounded-3xl shadow-xl ">
           <HiCheckCircle className="text-[100px] text-green-600" />

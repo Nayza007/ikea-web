@@ -3,7 +3,7 @@ import RegisterForm from "./RegisterForm";
 
 export default function RegisterContainer() {
   return (
-    <div className="w-full flex my-2 mx-2 flex-1">
+    <div className="w-full flex my-2 mx-2 flex-1 mt-[150px]">
       <div className="flex-1 flex flex-col gap-2 px-4">
         {/* left */}
         <div className=" font-extrabold text-[24px] pt-2 ">สร้างบัญชี</div>

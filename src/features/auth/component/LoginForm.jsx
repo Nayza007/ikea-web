@@ -32,7 +32,7 @@ export default function LoginForm() {
   return (
     <>
       <form
-        className="w-full flex my-2 mx-2 flex-1"
+        className="w-full flex my-2 mx-2 flex-1 "
         onSubmit={handleSubmitForm(onSubmit)}
       >
         <div className="flex-1 flex flex-col gap-3 px-4">

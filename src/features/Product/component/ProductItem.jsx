@@ -42,11 +42,11 @@ export default function ProductItem() {
   }, [update]);
 
   return (
-    <div className="  flex flex-col justify-start items-center mb-5 gap-10">
+    <div className="  flex flex-col justify-start items-center mb-5 gap-10 mt-[150px]">
       {/* content */}
 
       <div className="flex justify-center items-start gap-5 w-[80%]  mx-auto  pt-10 ">
-        <div className=" object-center flex-[2] shrink-0  rounded-[20px] flex  ">
+        <div className=" object-center flex-[2] shrink-0  rounded-[20px] flex  border ">
           <img
             src={item?.productImage}
             alt={item?.productName}
